@@ -14,16 +14,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  avatarStyles: {
-    marginTop: theme.spacing(1),
-  }
 }));
 
 const Auth = props => {
   const {
     gridContainerStyles,
     formStyles,
-    avatarStyles,
   } = useStyles();
   return (
     <Container component="main" maxWidth="xs">
@@ -44,7 +40,7 @@ const Auth = props => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1">Sign in</Typography>
-            <Typography component="h1">youtube freetime organizer</Typography>
+            <Typography component="h1">Your youtube freetime organizer</Typography>
           </Grid>
           <Grid item className={formStyles}>
             <AuthForm />

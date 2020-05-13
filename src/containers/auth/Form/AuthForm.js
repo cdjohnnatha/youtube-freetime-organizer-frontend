@@ -1,17 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { object, string } from 'yup';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import EmailPasswordFields from './EmailPasswordFields';
+import EmailPasswordFields from '../../../components/emailPasswordFields/EmailPasswordFields';
 import Button from '../../../components/Button/Button';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,11 +16,14 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonStyles: {
     marginTop: theme.spacing(4),
-  }
+  },
+  signUpButtonStyles: {
+    marginTop: '1em',
+  },
 }));
 
 const AuthForm = props => {
-  const { formMarginStyles, buttonStyles } = useStyles();
+  const { formMarginStyles, buttonStyles, signUpButtonStyles } = useStyles();
   const initialValues = {
     email: '',
     password: '',
@@ -45,6 +44,13 @@ const AuthForm = props => {
       <Grid container direction="column" className={formMarginStyles}>
         <EmailPasswordFields />
         <Button variant="outlined" className={buttonStyles}>Login</Button>
+        <Grid container justify="flex-end">
+          <Grid item className={signUpButtonStyles}>
+            <Link href="/sign-up" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
       </Grid>
     </Formik>
   )
