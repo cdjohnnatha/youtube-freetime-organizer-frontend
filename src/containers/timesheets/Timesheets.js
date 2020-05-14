@@ -1,8 +1,15 @@
-import React from 'react'
-import { Container, Grid, Paper, Typography, Avatar } from '@material-ui/core';
+import React, { useEffect } from 'react'
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import TimesheetForm from './timesheetForm/TimesheetForm';
+import { connect } from "react-redux";
+import { inProgressTimesheet } from '../../store/timesheet-scheduled-hours/action';
+import TimesheetGridElements from '../../components/timesheets/timesheetGridElements/TimesheetGridElements';
+import TimesheetWeekDays from '../../components/timesheets/timesheetWeekDays/TimesheetWeekDays';
 
 const useStyles = makeStyles((theme) => ({
   gridContainerStyles: {
@@ -15,11 +22,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Timesheets = () => {
+const Timesheets = ({ fetchInProgressTimesheet, timesheetInProgress }) => {
   const {
     gridContainerStyles,
     formStyles,
   } = useStyles();
+  useEffect(() => {
+    fetchInProgressTimesheet();
+  }, [])
+
+  const {
+    name,
+    description,
+    search_keywords,
+    status,
+    total_days_complete_videos_list,
+    timesheet_schedule_hours,
+  } = timesheetInProgress;
   return (
     <Container component="main" maxWidth="xs">
       <Paper>
@@ -35,13 +54,17 @@ const Timesheets = () => {
             direction="column"
             alignItems="center"
           >
-            <Avatar>
-              <DateRangeIcon />
-            </Avatar>
-            <Typography component="h1">Create a timesheet</Typography>
+            <Grid>
+              <Typography component="h1">In progress timesheet</Typography>
+            </Grid>
           </Grid>
           <Grid item className={formStyles}>
-            <TimesheetForm />
+            <TimesheetGridElements title="Name:" content={name}/>
+            <TimesheetGridElements title="Description:" content={description}/>
+            <TimesheetGridElements title="Search keywords:" content={search_keywords}/>
+            <TimesheetGridElements title="Total days to complete list:" content={total_days_complete_videos_list}/>
+            <TimesheetGridElements title="Status" content={status}/>
+            <TimesheetWeekDays timesheetScheduleHours={timesheet_schedule_hours} />
           </Grid>
         </Grid>
       </Paper>
@@ -49,4 +72,14 @@ const Timesheets = () => {
   )
 }
 
-export default Timesheets;
+const mapStatToProps = ({ timesheetScheduledHours }) => ({
+  loading: timesheetScheduledHours.loading,
+  timesheetInProgress: timesheetScheduledHours.timesheetInProgress || {},
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchInProgressTimesheet: (params) => dispatch(inProgressTimesheet()),
+})
+
+
+export default connect(mapStatToProps, mapDispatchToProps)(Timesheets);

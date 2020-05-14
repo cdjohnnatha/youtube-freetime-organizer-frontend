@@ -17,26 +17,26 @@ const useStyles = makeStyles((theme) => ({
 
 const Video = ({
   fetchScheduledHours,
-  loading,
   hasVideos,
   timesheet_videos,
-  availableMinutes,
-  dayOfWeek,
-  message,
   onWatched,
 }) => {
   const [videoState, setVideoState] = useState({
     timesheet_videos,
     activeVideoIndex: 0,
-    maxVideosIndex: timesheet_videos.length,
+    maxVideosIndex: timesheet_videos.length || 0,
   });
 
   useEffect(() => {
     fetchScheduledHours();
   }, []);
 
+  useEffect(() => {
+    setVideoState({ ...videoState, timesheet_videos, maxVideosIndex: timesheet_videos.length })
+  }, [timesheet_videos]);
+
   const classes = useStyles();
-  let renderContent = (<EmptyContent message={'You have any video for today'} />);
+  let renderContent = (<EmptyContent message={'You have no videos for today'} />);
 
   const onVideoEndHandler = async (timesheet_video_id) => {
     await onWatched(timesheet_video_id);
@@ -62,7 +62,7 @@ const mapStatToProps = ({ timesheetScheduledHours }) => {
   return {
     loading: timesheetScheduledHours.loading,
     hasVideos: timesheetScheduledHours.timesheet_videos.length > 0,
-    timesheet_videos: timesheetScheduledHours.timesheet_videos,
+    timesheet_videos: timesheetScheduledHours.timesheet_videos || [],
     availableMinutes: timesheetScheduledHours.available_minutes,
     dayOfWeek: timesheetScheduledHours.day_of_week,
     message: timesheetScheduledHours.message,

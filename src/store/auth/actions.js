@@ -8,6 +8,7 @@ import {
 } from './actionTypes';
 
 import { setNotificationError, setNotificationMessage } from '../notification/actions';
+import history from '../../config/history';
 
 const authStart = () => ({ type: AUTH_START });
 
@@ -52,5 +53,6 @@ export const signUpEmailProvider = (params) => async dispatch => {
 };
 
 export const logout = () => dispatch => {
+  history.push('login');
   dispatch({ type: AUTH_LOGOUT })
 }

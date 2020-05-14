@@ -11,7 +11,6 @@ const styles = {
 }
 
 const VideoCard = ({ timesheetVideo, onVideoEndHandler }) => {
-
   const {
     id,
     title,
@@ -66,6 +65,8 @@ const VideoCard = ({ timesheetVideo, onVideoEndHandler }) => {
     </CardContent>
   );
 }
+
+
 
 
 export default VideoCard;
