@@ -28,30 +28,19 @@ const useStyles = makeStyles((theme) => ({
 const TimesheetForm = ({ loading, createTimesheets }) => {
   const { formMarginStyles, buttonStyles, weekDaysMargin } = useStyles();
   const weekDayGridSize = 3;
-  // const initialValues = {
-  //   name: '',
-  //   description: '',
-  //   search_keywords: '',
-  //   available_time_0: 0,
-  //   available_time_1: 0,
-  //   available_time_2: 0,
-  //   available_time_3: 0,
-  //   available_time_4: 0,
-  //   available_time_5: 0,
-  //   available_time_6: 0,
-  // }
   const initialValues = {
-    name: 'a',
-    description: 'test',
-    search_keywords: 'Node',
-    available_time_0: 10,
-    available_time_1: 20,
-    available_time_2: 30,
-    available_time_3: 40,
-    available_time_4: 50,
-    available_time_5: 60,
-    available_time_6: 80,
+    name: '',
+    description: '',
+    search_keywords: '',
+    available_time_0: 0,
+    available_time_1: 0,
+    available_time_2: 0,
+    available_time_3: 0,
+    available_time_4: 0,
+    available_time_5: 0,
+    available_time_6: 0,
   }
+  
   const yupValidationSchema = object({
     name: string().required(),
     description: string(),
