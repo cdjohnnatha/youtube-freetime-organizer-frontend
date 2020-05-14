@@ -1,13 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { bool } from 'prop-types'
+import { connect } from "react-redux";
+
 import PublicRoutes from './PublicRoutes';
+import PrivateRoutes from './PrivateRoutes';
 
-const routes = props => {
-  return (<PublicRoutes />)
+const Routes = ({ isLogged }) => {
+  let routes = (<PublicRoutes />);
+  
+  if (isLogged) {
+    routes = (<PrivateRoutes />);
+  }
+  return routes;
 }
 
-routes.propTypes = {
-
+Routes.propTypes = {
+  isLogged: bool,
 }
 
-export default routes
+Routes.defaultProps = {
+  isLogged: false,
+}
+
+const mapStatToProps = ({ auth }) => ({
+  isLogged: !!auth.accessToken
+})
+
+export default connect(mapStatToProps)(Routes);

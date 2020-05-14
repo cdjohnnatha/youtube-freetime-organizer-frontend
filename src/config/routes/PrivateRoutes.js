@@ -1,15 +1,18 @@
 import React from 'react'
-import { Switch,Router } from 'react-router-dom';
-// import history from '../history';
+import { Switch, Router, Route } from 'react-router-dom';
+import history from '../history';
+import Layout from '../../components/layout/Layout';
+import Container from '@material-ui/core/Container';
 
 const PrivateRoutes = () => {
   return (
-    // <Router history={history}>
-    <Router>
-      <Switch>
-        {/* <Route path="/" exact component={Index} /> */}
-      </Switch>
-    </Router>
+    <Layout>
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={Container} />
+        </Switch>
+      </Router>
+    </Layout>
   )
 }
 
