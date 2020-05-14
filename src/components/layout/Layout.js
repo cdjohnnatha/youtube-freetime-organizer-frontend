@@ -64,7 +64,7 @@ const Layout = ({ children, onLogout, isAthenticated, redirectPath }) => {
       <SidebarMenu />
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Notifications />
+        <Notifications timeoutToHidden={2500}/>
         {children}
       </main>
     </div>

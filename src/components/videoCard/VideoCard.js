@@ -1,4 +1,5 @@
 import React from 'react';
+import { func, shape } from 'prop-types';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -9,12 +10,15 @@ const styles = {
   }
 }
 
-const VideoCard = ({ timesheetVideo }) => {
+const VideoCard = ({ timesheetVideo, onVideoEndHandler }) => {
+
   const {
+    id,
     title,
     description,
     youtube_video_id_key,
   } = timesheetVideo;
+
   const opts = {
     height: '390',
     width: '640',
@@ -54,7 +58,7 @@ const VideoCard = ({ timesheetVideo }) => {
             <YouTube
               opts={opts}
               videoId={youtube_video_id_key}
-            // onEnd={onVideoEndHandler} 
+              onEnd={() => onVideoEndHandler(id)} 
             />
           </Grid>
         </Grid>

@@ -42,3 +42,15 @@ export const createTimesheet = (params) => async dispatch => {
   }
   dispatch(setLoading(false));
 }
+
+export const setWatchedVideo = (timesheet_video_id) => async dispatch => {
+  dispatch(setLoading(true));
+  const axiosInstance = new Axios();
+  const { success, error } = await axiosInstance._instance.get(`/users/timesheets/videos/${timesheet_video_id}`);
+  if (success) {
+    dispatch(setNotificationMessage('Congratulations, you finished one video from your timesheet'));
+  } else {
+    dispatch(setNotificationError(error));
+  }
+  dispatch(setLoading(false));
+}
