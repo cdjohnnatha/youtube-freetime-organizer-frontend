@@ -6,6 +6,7 @@ const EmailPasswordFields = () => {
   return (
     <>
       <Field
+        id="email_field"
         name="email"
         component={TextField}
         label="Email"
@@ -15,6 +16,7 @@ const EmailPasswordFields = () => {
       /> 
       <Field
         name="password"
+        id="password_field"
         component={TextField}
         label="Password"
         margin="normal"

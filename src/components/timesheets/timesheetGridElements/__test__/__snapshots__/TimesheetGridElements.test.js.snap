@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test TimesheetGridElements component TimesheetGridElements snapshot renders 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-item"
+  style={
+    Object {
+      "marginBottom": "1em",
+    }
+  }
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-item"
+  >
+    <h1
+      className="MuiTypography-root MuiTypography-body1"
+      style={
+        Object {
+          "marginRight": "1em",
+        }
+      }
+    >
+      Test
+    </h1>
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle1"
+      style={
+        Object {
+          "color": "grey",
+        }
+      }
+    >
+      Content
+    </h6>
+  </div>
+</div>
+`;

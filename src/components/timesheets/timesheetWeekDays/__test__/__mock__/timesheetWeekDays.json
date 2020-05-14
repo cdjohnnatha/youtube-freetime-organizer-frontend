@@ -1,0 +1,30 @@
+[
+  {
+    "day_of_week": "MONDAY",
+    "available_minutes": 10
+  },
+  {
+    "day_of_week": "TUESDAY",
+    "available_minutes": 20
+  },
+  {
+    "day_of_week": "WEDNESDAY",
+    "available_minutes": 30
+  },
+  {
+    "day_of_week": "THURSDAY",
+    "available_minutes": 40
+  },
+  {
+    "day_of_week": "FRIDAY",
+    "available_minutes": 50
+  },
+  {
+    "day_of_week": "SATURDAY",
+    "available_minutes": 50
+  },
+  {
+    "day_of_week": "SUNDAY",
+    "available_minutes": 60
+  }
+]

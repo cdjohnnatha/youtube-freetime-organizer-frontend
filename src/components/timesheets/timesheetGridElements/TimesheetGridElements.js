@@ -9,7 +9,7 @@ const TimesheetGridElements = ({ title, content, direction }) => (
         {title}
       </Typography>
       <Typography
-        component="subtitle1"
+        variant="subtitle1"
         style={{ color: 'grey' }}
       >
         {content}

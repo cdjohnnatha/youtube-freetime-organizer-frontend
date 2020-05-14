@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test TimesheetWeekDays component TimesheetWeekDays snapshot renders 1`] = `
+Array [
+  <h1
+    className="MuiTypography-root MuiTypography-body1"
+    style={
+      Object {
+        "marginBottom": "1em",
+      }
+    }
+  >
+    Timesheet schedule:
+  </h1>,
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          MONDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          10 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          TUESDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          20 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          WEDNESDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          30 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          THURSDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          40 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          FRIDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          50 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          SATURDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          50 min
+        </h6>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginBottom": "1em",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column"
+      >
+        <h1
+          className="MuiTypography-root MuiTypography-body1"
+          style={
+            Object {
+              "marginRight": "1em",
+            }
+          }
+        >
+          SUNDAY
+        </h1>
+        <h6
+          className="MuiTypography-root MuiTypography-subtitle1"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          60 min
+        </h6>
+      </div>
+    </div>
+  </div>,
+]
+`;
