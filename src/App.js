@@ -1,10 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux'
+
+// import './App.css';
 import Routes from './config/routes/Routes';
+import store from './store/store';
 
 const App = () => {
-  return (<Routes />);
+  return (
+    <Provider store={store()}>
+      <Routes />
+    </Provider>
+  );
 }
 
 export default App;
