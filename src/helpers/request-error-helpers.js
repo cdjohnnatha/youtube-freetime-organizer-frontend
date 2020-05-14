@@ -1,6 +1,5 @@
 class RequestErrorHelper {
   constructor({ response }) {
-    console.log('building');
     this._error = {
       message: response.data,
       status: response.status,
@@ -9,8 +8,6 @@ class RequestErrorHelper {
   }
 
   get error() {
-    console.log('test');
-    console.error(this._error);
     return this._error;
   }
 }

@@ -4,7 +4,6 @@ import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import CustomTextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import { string } from 'prop-types';
 
 const TextField = ({

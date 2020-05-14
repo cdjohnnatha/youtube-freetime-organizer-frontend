@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles';
-import { string, any, bool } from 'prop-types';
+import { bool } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   circularProgressStyle: {

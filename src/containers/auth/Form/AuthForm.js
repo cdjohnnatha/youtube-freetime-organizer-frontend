@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 
 import history from '../../../config/history';
 import EmailPasswordFields from '../../../components/emailPasswordFields/EmailPasswordFields';
-import Button from '../../../components/Button/Button';
+import Button from '../../../components/button/Button';
 
 import { signInEmailProvider } from '../../../store/auth/actions';
 
@@ -36,9 +36,7 @@ const AuthForm = ({ onAuth, loading, error, redirectPath }) => {
     password: string().required(),
   })
   const onSubmit = async (values) => {
-    console.log('[sending]', values);
-    const response = await onAuth(values);
-    console.log('[response]', response);
+    await onAuth(values);
   }
 
   useEffect(() => {
@@ -59,6 +57,7 @@ const AuthForm = ({ onAuth, loading, error, redirectPath }) => {
               className={buttonStyles}
               type="submit"
               loading={loading}
+              disabled={loading}
             >
               Login
             </Button>
@@ -77,22 +76,24 @@ const AuthForm = ({ onAuth, loading, error, redirectPath }) => {
 }
 
 AuthForm.propTypes = {
-
+  onAuth: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.shape({}),
+  redirectPath: PropTypes.string,
 }
 
-const mapStatToProps = ({ auth }) => {
-  console.log('propsp[', auth);
-  return {
-    loading: auth.loading,
-    error: auth.error,
-  //   // isAthenticated: auth.client !== null,
-    redirectPath: auth.redirectPath
-  };
+AuthForm.defaultProps = {
+  redirectPath: '/',
 }
+
+const mapStatToProps = ({ auth }) => ({
+  loading: auth.loading,
+  error: auth.error,
+  redirectPath: auth.redirectPath
+})
 
 const mapDispatchToProps = dispatch => ({
   onAuth: (email, password) => dispatch(signInEmailProvider(email, password)),
 })
-
 
 export default connect(mapStatToProps, mapDispatchToProps)(AuthForm);

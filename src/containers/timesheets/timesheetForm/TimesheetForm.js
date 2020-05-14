@@ -2,15 +2,13 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik';
 import { object, string, number } from 'yup';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 import { objectValues } from 'simple-object-handler';
 
 // import history from '../../../config/history';
-// import EmailPasswordFields from '../../../components/emailPasswordFields/EmailPasswordFields';
-import Button from '../../../components/Button/Button';
+import Button from '../../../components/button/Button';
 import { Field } from 'formik';
 import TextField from '../../../components/textField/TextField';
 import { Typography } from '@material-ui/core';
@@ -31,17 +29,29 @@ const useStyles = makeStyles((theme) => ({
 const TimesheetForm = ({ loading, createTimesheets }) => {
   const { formMarginStyles, buttonStyles, weekDaysMargin } = useStyles();
   const weekDayGridSize = 3;
+  // const initialValues = {
+  //   name: '',
+  //   description: '',
+  //   search_keywords: '',
+  //   available_time_0: 0,
+  //   available_time_1: 0,
+  //   available_time_2: 0,
+  //   available_time_3: 0,
+  //   available_time_4: 0,
+  //   available_time_5: 0,
+  //   available_time_6: 0,
+  // }
   const initialValues = {
-    name: '',
-    description: '',
-    search_keywords: '',
-    available_time_0: 0,
-    available_time_1: 0,
-    available_time_2: 0,
-    available_time_3: 0,
-    available_time_4: 0,
-    available_time_5: 0,
-    available_time_6: 0,
+    name: 'a',
+    description: 'test',
+    search_keywords: 'Node',
+    available_time_0: 10,
+    available_time_1: 20,
+    available_time_2: 30,
+    available_time_3: 40,
+    available_time_4: 50,
+    available_time_5: 60,
+    available_time_6: 80,
   }
   const yupValidationSchema = object({
     name: string().required(),
@@ -58,7 +68,7 @@ const TimesheetForm = ({ loading, createTimesheets }) => {
   const onSubmit = async ({ name, description, search_keywords, ...available_time }) => {
 
     const available_minutes_per_day = objectValues(available_time);
-    const response = await createTimesheets({
+    await createTimesheets({
       name,
       description,
       search_keywords,
@@ -204,13 +214,13 @@ const TimesheetForm = ({ loading, createTimesheets }) => {
 }
 
 TimesheetForm.propTypes = {
-
+  loading: PropTypes.bool.isRequired,
+  createTimesheets: PropTypes.func.isRequired,
 }
 
 const mapStatToProps = ({ auth }) => ({
   loading: auth.loading,
   error: auth.error,
-  //   // isAthenticated: auth.client !== null,
   redirectPath: auth.redirectPath
 });
 

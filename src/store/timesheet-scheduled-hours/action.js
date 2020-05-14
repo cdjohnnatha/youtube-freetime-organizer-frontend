@@ -1,13 +1,12 @@
+import { isObject } from 'simple-object-handler';
 import Axios from '../../config/axios';
 import {
   SET_LOADING,
   SET_TIMESHEET_SHCEDULED_HOURS,
-  SET_MESSAGE,
 } from './actionTypes';
-import { isObject } from 'simple-object-handler';
+import { setNotificationError, setNotificationMessage } from '../notification/actions';
 
 const setLoading = (loading) => ({ type: SET_LOADING, payload: { loading } });
-const setMessage = (message) => ({ type: SET_MESSAGE, payload: { message } });
 
 
 const setTimesheetScheduledHours = (timesheetScheduledHours) => ({
@@ -19,12 +18,15 @@ export const fetchTimesheetScheduledHours = () => async dispatch => {
   dispatch(setLoading(true));
   const axiosInstance = new Axios();
   const { success, data, error } = await axiosInstance._instance.get('/users/timesheets/available-videos');
+  console.log(data);
   if (success) {
     if (isObject(data)) {
       dispatch(setTimesheetScheduledHours(data));
     } else {
-      dispatch(setMessage(data));
+      dispatch(setNotificationMessage(data));
     }
+  } else {
+    dispatch(setNotificationError(error));
   }
   dispatch(setLoading(false));
 };
@@ -32,11 +34,11 @@ export const fetchTimesheetScheduledHours = () => async dispatch => {
 export const createTimesheet = (params) => async dispatch => {
   dispatch(setLoading(true));
   const axiosInstance = new Axios();
-  const { success, data, error } = await axiosInstance._instance.post('/users/timesheets', params);
-  console.log('[success]', success);
-  console.log('[data]', data);
+  const { success, error } = await axiosInstance._instance.post('/users/timesheets', params);
   if (success) {
-    console.log('[data]', data);
+    dispatch(setNotificationMessage('Create timesheet successfully'));
+  } else {
+    dispatch(setNotificationError(error));
   }
   dispatch(setLoading(false));
 }

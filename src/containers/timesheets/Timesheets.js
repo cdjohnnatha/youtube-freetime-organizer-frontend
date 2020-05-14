@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 import { Container, Grid, Paper, Typography, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DateRangeIcon from '@material-ui/icons/DateRange';
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Timesheets = props => {
+const Timesheets = () => {
   const {
     gridContainerStyles,
     formStyles,
@@ -48,10 +47,6 @@ const Timesheets = props => {
       </Paper>
     </Container>
   )
-}
-
-Timesheets.propTypes = {
-
 }
 
 export default Timesheets;

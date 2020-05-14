@@ -4,13 +4,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 
 import SidebarMenu from './sidebarMenu/SidebarMenu';
 import { logout } from '../../store/auth/actions';
 import history from '../../config/history';
+import Notifications from '../notifications/Notifications';
 
 const drawerWidth = 240;
 
@@ -35,11 +35,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Layout = ({ children, onLogout, isAthenticated, redirectPath }) => {
   const classes = useStyles();
-  useEffect(() => {
+
+  const redirectPage = () => {
     if (!isAthenticated) {
       history.push(redirectPath);
     }
-  }, [isAthenticated])
+  }
+
+  useEffect(() => {
+    redirectPage();
+  }, [isAthenticated]);
+
+  useEffect(() => {
+    redirectPage();
+  }, []);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -54,6 +64,7 @@ const Layout = ({ children, onLogout, isAthenticated, redirectPath }) => {
       <SidebarMenu />
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Notifications />
         {children}
       </main>
     </div>

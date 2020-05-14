@@ -3,7 +3,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import YouTube from 'react-youtube';
-// import VideoHelpers from '../../helpers/video-helpers';
 const styles = {
   textGridStyles: {
     marginBottom: '2em',
