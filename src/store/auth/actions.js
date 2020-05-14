@@ -3,8 +3,7 @@ import {
   AUTH_START,
   AUTH_SUCCESS,
   AUTH_FAIL,
-  AUTH_LOGOUT,
-  SET_REDIRECT_PATH
+  AUTH_LOGOUT
 } from './actionTypes';
 
 const authStart = () => ({ type: AUTH_START });
@@ -29,4 +28,8 @@ export const signInEmailProvider = ({ email, password }) => async dispatch => {
   } else {
     dispatch(authFail(error));
   }
+};
+
+export const logout = () => dispatch => {
+  dispatch({ type: AUTH_LOGOUT })
 }

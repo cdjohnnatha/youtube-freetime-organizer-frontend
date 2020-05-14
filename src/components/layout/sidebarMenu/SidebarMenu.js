@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 import history from '../../../config/history';
 
@@ -42,16 +44,16 @@ const SidebarMenu = () => {
       <div className={toolbar} />
       <Divider />
       <List>
-        <ListItem button onClick={() => onClickItemHandler('dashboard')}>
+        <ListItem button onClick={() => onClickItemHandler('/dashboard')}>
           <ListItemIcon><InboxIcon /></ListItemIcon>
           <ListItemText primary={"Dashboard"} />
         </ListItem>
-        <ListItem button onClick={() => onClickItemHandler('schedules')}>
-          <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={"Schedules"} />
+        <ListItem button onClick={() => onClickItemHandler('/timesheets/new')}>
+          <ListItemIcon><CalendarTodayIcon /></ListItemIcon>
+          <ListItemText primary={"Timesheets"} />
         </ListItem>
-        <ListItem button key="Videos" onClick={() => onClickItemHandler('videos')}>
-          <ListItemIcon><InboxIcon /></ListItemIcon>
+        <ListItem button key="Videos" onClick={() => onClickItemHandler('/videos')}>
+          <ListItemIcon><VideoLibraryIcon /></ListItemIcon>
           <ListItemText primary={"Videos"} />
         </ListItem>
       </List>
