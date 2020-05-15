@@ -12,6 +12,7 @@ import { Typography } from '@material-ui/core';
 import Button from '../../../../components/button/Button';
 import TextField from '../../../../components/textField/TextField';
 import { createTimesheet } from '../../../../store/timesheet-scheduled-hours/action';
+import { setNotificationError } from '../../../../store/notification/actions';
 
 const useStyles = makeStyles((theme) => ({
   formMarginStyles: {
@@ -25,20 +26,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TimesheetForm = ({ loading, createTimesheets }) => {
+const TimesheetForm = ({ loading, createTimesheets, onNotificationError }) => {
   const { formMarginStyles, buttonStyles, weekDaysMargin } = useStyles();
   const weekDayGridSize = 3;
+  // const initialValues = {
+  //   name: '',
+  //   description: '',
+  //   search_keywords: '',
+  //   available_time_0: 0,
+  //   available_time_1: 0,
+  //   available_time_2: 0,
+  //   available_time_3: 0,
+  //   available_time_4: 0,
+  //   available_time_5: 0,
+  //   available_time_6: 0,
+  // }
   const initialValues = {
-    name: '',
-    description: '',
-    search_keywords: '',
-    available_time_0: 0,
-    available_time_1: 0,
-    available_time_2: 0,
-    available_time_3: 0,
-    available_time_4: 0,
-    available_time_5: 0,
-    available_time_6: 0,
+    name: 'Green day',
+    description: 'Green day',
+    search_keywords: 'Green day',
+    available_time_0: 5,
+    available_time_1: 5,
+    available_time_2: 5,
+    available_time_3: 5,
+    available_time_4: 5,
+    available_time_5: 5,
+    available_time_6: 5,
   }
   
   const yupValidationSchema = object({
@@ -53,15 +66,30 @@ const TimesheetForm = ({ loading, createTimesheets }) => {
     available_time_5: number().required(),
     available_time_6: number().required(),
   })
-  const onSubmit = async ({ name, description, search_keywords, ...available_time }) => {
+  const onSubmit = async ({ name, description, search_keywords, ...available_time }, { setSubmitting }) => {
 
+    setSubmitting(false);
     const available_minutes_per_day = objectValues(available_time);
-    await createTimesheets({
-      name,
-      description,
-      search_keywords,
-      available_minutes_per_day,
-    });
+    const validateDays = available_minutes_per_day.map((availableTime) => availableTime !== 0);
+    if (validateDays.length > 3) {
+      const checkMininumTimeIs30 = available_minutes_per_day.reduce((a, b) => a + b);
+      if (checkMininumTimeIs30 >= 30) {
+        await createTimesheets({
+          name,
+          description,
+          search_keywords,
+          available_minutes_per_day,
+        });
+      } else {
+        onNotificationError({
+          message: 'Come on lets focus! at least 30 min in a week.'
+        })
+      }
+    } else {
+      onNotificationError({
+        message: 'Come on! You need at least 3 days or it might take forever to finish this list.'
+      });
+    }
   }
 
   // useEffect(() => {
@@ -73,7 +101,8 @@ const TimesheetForm = ({ loading, createTimesheets }) => {
       initialValues={initialValues}
       validationSchema={yupValidationSchema}
       onSubmit={onSubmit}
-      render={({ isSubmitting, ...props }) => (
+      render={({ isSubmitting, ...props }) => {
+        return (
         <Form>
           <Grid container direction="column" className={formMarginStyles}>
             <Grid item>
@@ -190,12 +219,13 @@ const TimesheetForm = ({ loading, createTimesheets }) => {
               className={buttonStyles}
               type="submit"
               loading={loading}
+              disabled={loading}
             >
               Create
             </Button>
           </Grid>
         </Form>
-      )
+      )}
       }
     />
   )
@@ -206,14 +236,13 @@ TimesheetForm.propTypes = {
   createTimesheets: PropTypes.func.isRequired,
 }
 
-const mapStatToProps = ({ auth }) => ({
-  loading: auth.loading,
-  error: auth.error,
-  redirectPath: auth.redirectPath
+const mapStatToProps = ({ timesheetScheduledHours }) => ({
+  loading: timesheetScheduledHours.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
   createTimesheets: (params) => dispatch(createTimesheet(params)),
+  onNotificationError: (error) => dispatch(setNotificationError(error)),
 })
 
 

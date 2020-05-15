@@ -5,7 +5,7 @@ import RequestErrorHelper from '../helpers/request-error-helpers';
 
 const defaultAxiosConfig = {
   baseUrl: process.env.REACT_APP_API_URL,
-  timeout: 2000,
+  timeout: 10000,
   headers: {},
 };
 

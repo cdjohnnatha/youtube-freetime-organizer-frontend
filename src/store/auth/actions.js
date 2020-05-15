@@ -53,6 +53,6 @@ export const signUpEmailProvider = (params) => async dispatch => {
 };
 
 export const logout = () => dispatch => {
-  history.push('login');
+  history.push('/login');
   dispatch({ type: AUTH_LOGOUT })
 }
